@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Race>
+
+@{
+    ViewData["Title"] = "Race List";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Race List</h1>
+    <div class="row">
+        @foreach (var race in Model)
+        {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="@race.Image" class="card-img-top" alt="@race.Title">
+                        <div class="card-body">
+                            <h5 class="card-title">@race.Title</h5>
+                            <p class="card-text">@race.Description</p>
+                                <div class="btn-group">
+                                    <a type="button" class="btn btn-sm btn-outline-info" asp-controller="Race" asp-action="Detail" asp-route-id="@race.Id">
+                                        View
+                                    </a>
+                                    <a type="button" class="btn btn-sm btn-outline-danger" asp-controller="Race" asp-action="Delete" asp-route-id="@race.Id">
+                                        Delete
+                                    </a>
+                                </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Category:</strong> @race.RaceCategory
+                            </li>
+                        </ul>
+                        <div class="card-footer text-center">
+                            <a asp-controller="Club" asp-action="Create" class="btn btn-primary">Register</a>
+                        </div>
+                    </div>
+                </div>
+        }
+    </div>
+</div>
